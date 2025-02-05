@@ -90,6 +90,5 @@ public class Order {
         return items.stream().map(OrderItem::getProduct).toList();
     }
 
-
 }
 

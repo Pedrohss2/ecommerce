@@ -21,7 +21,7 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductDTO> findById(@PathVariable Long id) {
-       ProductDTO dto = service.findById(id);
+        ProductDTO dto = service.findById(id);
 
         return ResponseEntity.ok().body(dto);
     }
@@ -45,5 +45,12 @@ public class ProductController {
 
         return ResponseEntity.created(uri).build();
     }
-}
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductDTO> update(@PathVariable Long id, @RequestBody ProductDTO dto) {
+        dto = service.update(id, dto);
+
+        return ResponseEntity.ok();
+    }
+
+}

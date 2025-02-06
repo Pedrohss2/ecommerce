@@ -3,6 +3,7 @@ package com.ph.ecommerce.services;
 import com.ph.ecommerce.dto.ProductDTO;
 import com.ph.ecommerce.entities.Product;
 import com.ph.ecommerce.repositories.ProductRepository;
+import org.hibernate.boot.beanvalidation.IntegrationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -53,6 +54,11 @@ public class ProductService {
         product = repository.save(product);
 
         return new ProductDTO(product);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        repository.deleteById(id);
     }
 
     public void copyToEntity(Product product, ProductDTO dto) {

@@ -1,7 +1,6 @@
 package com.ph.ecommerce.dto;
 
 import com.ph.ecommerce.entities.Product;
-import jakarta.persistence.Column;
 
 public class ProductDTO {
 
@@ -14,8 +13,6 @@ public class ProductDTO {
     private Double price;
 
     private String imgUrl;
-
-    public ProductDTO() {}
 
     public ProductDTO(Long id, String name, String description, Double price, String imgUrl) {
         this.id = id;

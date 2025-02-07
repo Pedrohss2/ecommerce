@@ -3,14 +3,12 @@ package com.ph.ecommerce.services;
 import com.ph.ecommerce.dto.ProductDTO;
 import com.ph.ecommerce.entities.Product;
 import com.ph.ecommerce.repositories.ProductRepository;
-import org.hibernate.boot.beanvalidation.IntegrationException;
+import com.ph.ecommerce.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.sound.sampled.Port;
 
 @Service
 public class ProductService {
@@ -20,7 +18,7 @@ public class ProductService {
 
     @Transactional(readOnly = true)
     public ProductDTO findById(Long id) {
-        Product product = repository.findById(id).orElseThrow(() -> new RuntimeException("Id not found"));
+        Product product = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product id not found"));
 
         return new ProductDTO(product);
     }

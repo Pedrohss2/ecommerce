@@ -2,7 +2,6 @@ package com.ph.ecommerce.entities;
 
 import com.ph.ecommerce.entities.enums.OrderStatus;
 import jakarta.persistence.*;
-import org.aspectj.weaver.ast.Or;
 
 import java.time.Instant;
 import java.util.HashSet;

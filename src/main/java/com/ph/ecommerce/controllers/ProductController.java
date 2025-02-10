@@ -1,7 +1,9 @@
 package com.ph.ecommerce.controllers;
 
 import com.ph.ecommerce.dto.ProductDTO;
+import com.ph.ecommerce.dto.error.CustomError;
 import com.ph.ecommerce.services.ProductService;
+import com.ph.ecommerce.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.time.Instant;
 
 
 @RestController
@@ -20,7 +23,7 @@ public class ProductController {
     private ProductService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<?> findById(@PathVariable Long id) {
         ProductDTO dto = service.findById(id);
 
         return ResponseEntity.ok().body(dto);

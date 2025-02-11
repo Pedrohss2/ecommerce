@@ -1,15 +1,20 @@
 package com.ph.ecommerce.dto;
 
 import com.ph.ecommerce.entities.Product;
+import jakarta.validation.constraints.*;
 
 public class ProductDTO {
 
     private Long id;
 
+    @NotBlank(message = "Field name cannot be blank")
+    @Size(min = 3, max = 80)
     private String name;
 
+    @Size(min = 10, max = 100)
     private String description;
 
+    @Positive(message = "Price cannot be negative")
     private Double price;
 
     private String imgUrl;
